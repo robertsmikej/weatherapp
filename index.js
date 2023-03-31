@@ -64,12 +64,8 @@ app.get(`/calls/getLocation`, (req, res) => {
 });
 
 app.get(`/calls/getGridLocation`, (req, res) => {
-    // console.log(req.query);
     const searchParams = new URLSearchParams(req.query);
     const searchURL = `https://api.weather.gov/points/${searchParams.get("lat")},${searchParams.get("lng")}`;
-    console.log("searchURL", searchURL)
-
-
     axios.request({
         method: `GET`,
         url: searchURL
@@ -81,7 +77,6 @@ app.get(`/calls/getGridLocation`, (req, res) => {
 });
 
 app.get(`/calls/getForecast`, async (req, res) => {
-
     const searchParams = new URLSearchParams(req.query);
 
     const getGeoCode = await axios.request({
