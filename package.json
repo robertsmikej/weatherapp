@@ -1,0 +1,28 @@
+{
+  "name": "weatherapp",
+  "version": "1.0.0",
+  "description": "Weather App for Animal Farm",
+  "main": "index.js",
+  "scripts": {
+    "start:backend": "nodemon index.js",
+    "start:frontend": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robertsmikej/weatherapp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/robertsmikej/weatherapp/issues"
+  },
+  "homepage": "https://github.com/robertsmikej/weatherapp#readme",
+  "dependencies": {
+    "axios": "^1.3.4",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "nodemon": "^2.0.22"
+  }
+}
