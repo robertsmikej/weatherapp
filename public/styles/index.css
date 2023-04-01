@@ -1,8 +1,201 @@
-body {
-    background-color: blanchedalmond;
+@font-face {
+    font-family: 'Raleway';
+    src: url('../fonts/Raleway-Regular.ttf');
 }
 
-.text {
-    text-align: center;
-    background-color: aliceblue;
+@font-face {
+    font-family: 'Raleway-Light';
+    src: url('../fonts/Raleway-Light.ttf');
+}
+
+@font-face {
+    font-family: 'Raleway-SemiBold';
+    src: url('../fonts/Raleway-SemiBold.ttf');
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: Raleway, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+.weather__app {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: rgb(226, 226, 226);
+    background: linear-gradient(69deg, rgba(226, 226, 226, 1) 0%, rgba(107, 107, 107, 1) 100%);
+}
+
+.weather__app h1 {
+    margin: 20px auto;
+    font-family: "Raleway-SemiBold", sans-serif;
+    color: #FFF;
+}
+
+.weather__app__content {
+    width: 90%;
+    height: 84%;
+    position: absolute;
+    top: 8%;
+    left: 5%;
+    display: grid;
+    grid-template-columns: min(55%) min(45%);
+    background-color: #FFF;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.wa__side {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 36;
+}
+
+.wa__side--wide {
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.wa__overlay--darken {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 1;
+}
+
+.wa__wide__inner__container {
+    width: 100%;
+    z-index: 2;
+    box-sizing: border-box;
+}
+
+.wa__wide__top__container {
+    flex: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wa__wide__top--sitename {
+    font-family: Raleway, sans-serif;
+    color: #FFF;
+    padding: 0;
+    margin: 0;
+    text-shadow: 1px 1px 3px #696969;
+}
+
+.wa__current__location {
+    min-width: 240px;
+    padding: 10px 14px;
+    align-self: flex-end;
+    background: rgba(0, 0, 0, 0.25);
+    color: #FFF;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.wa__current__location--icon-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 8px;
+}
+
+.wa__current__location--icon-container img {
+    width: 24px;
+}
+
+.wa__current__location--text-container {}
+
+.wa__current__location--text-container p {
+    margin: 2px 0;
+    padding: 0;
+}
+
+.wa__current__location--text-container p:nth-of-type(2) {
+    font-family: Raleway-SemiBold, arial;
+    font-size: 18px;
+    min-height: 21px;
+}
+
+.wa__wide__mid__container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.wa__wide__mid__container hr {
+    width: 100%;
+    max-width: 160px;
+    height: 8px;
+    border: none;
+    border-radius: 10px;
+    background-color: #FFF;
+}
+
+.wa__location__input__container {
+    margin: 20px auto;
+    width: 100%;
+    max-width: 420px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.wa__location__input {
+    flex: 1;
+    max-width: 90%;
+    background: #fff;
+    color: #a3a3a3;
+    font: inherit;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.1);
+    border: 0;
+    outline: 0;
+    padding: 22px 18px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.wa__location__input:focus-visible {
+    outline-offset: 0px;
+}
+
+.wa__location__button {
+    margin-left: -56px;
+    padding: 12px 36px;
+    background: #7f8ff4;
+    color: #fff;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    border: 0;
+    outline: 0;
+    transition: all .4s ease-in;
+    cursor: pointer;
+    font-family: "Raleway-Light", Arial;
+    font-size: 18px;
+    align-self: center;
+}
+
+.wa__location__button:hover {
+    background: #6c7ff2;
+}
+
+.wa__location__button:active {
+    background: #7f8ff4;
+    box-shadow: inset 0 0 10px 2px rgba(0, 0, 0, 0.2);
 }

@@ -6,13 +6,43 @@
 </head>
 
 <body>
-    <div class="text">
-        <h1>Hello Worlds!</h1>
-        <p>Your first node.js hosted website!</p>
+
+    <div class="weather__app">
+        <div class="weather__app__content">
+
+            <div class="wa__side wa__side--wide">
+                <div class="wa__overlay--darken"></div>
+                <div class="wa__wide__inner__container wa__wide__top__container">
+                    <h2 class="wa__wide__top--sitename">Extreme Weather</h2>
+                    <div class="wa__current__location">
+                        <div class="wa__current__location--icon-container">
+                            <img src="./imgs/icons/location-pin-white.png" alt="Current Location Pin Icon">
+                        </div>
+                        <div class="wa__current__location--text-container">
+                            <p>Current Location</p>
+                            <p data-current-location></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="wa__wide__inner__container wa__wide__mid__container">
+                    <h1>For all your weather forecast needs</h1>
+                    <hr />
+                    <form class="wa__location__input__container">
+                        <input data-location-input class="wa__location__input" type="text" placeholder="What's your location?" />
+                        <button data-location-button type="button" class="wa__location__button">Find</button>
+                    </form>
+                </div>
+            </div>
+            <div class="wa__side">
+                <h3>Today</h3>
+            </div>
+        </div>
     </div>
+
 </body>
 
 
 <script type="text/javascript" src="js/script.js"></script>
 
 </html>
+<!-- https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AUjq9jlDVfnqfTBLASifbbnBs26REJORCW_kCPaPP-4tzat8Kw8yjCCUgIH1y2nMSOlMk1v3XU42dRyPNJviF3HwYdSplhIJUt28uD0AHrGC4-PUAJi9I3Z7uumWhqm11ETMxLtBuRnR8Wm8NX54lpSZqGO3TAfJg0j9RsaMpvq15FngOKZU&key=AIzaSyBUdwXWP_my-i0XYerY7BcDic0L-Jhe8Ok -->

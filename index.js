@@ -15,60 +15,65 @@ app.get(`/`, (req, res) => {
     res.sendFile(`/public/index.html`, { root: '.' });
 });
 
-app.get(`/calls/basicData`, (req, res) => {
-    const options = {
-        method: `GET`,
-        url: `https://www.ncei.noaa.gov/cdo-web/api/v2/datasets`,
-        params: {},
-        headers: {
-            'token': process.env.NOAA_KEY
-        }
-    };
-    axios.request(options).then((response) => {
-        res.status(200).json(response.data)
-    }).catch((error) => {
-        console.error(error);
-    })
-});
+// app.get(`/calls/basicData`, (req, res) => {
+//     const options = {
+//         method: `GET`,
+//         url: `https://www.ncei.noaa.gov/cdo-web/api/v2/datasets`,
+//         params: {},
+//         headers: {
+//             'token': process.env.NOAA_KEY
+//         }
+//     };
+//     axios.request(options).then((response) => {
+//         res.status(200).json(response.data)
+//     }).catch((error) => {
+//         console.error(error);
+//     })
+// });
 
-app.get(`/calls/allLocations`, (req, res) => {
-    const options = {
-        method: `GET`,
-        url: `https://www.ncei.noaa.gov/cdo-web/api/v2/locations`,
-        params: {},
-        headers: {
-            'token': process.env.NOAA_KEY
-        }
-    };
-    axios.request(options).then((response) => {
-        res.status(200).json(response.data)
-    }).catch((error) => {
-        console.error(error);
-    })
-});
+// app.get(`/calls/allLocations`, (req, res) => {
+//     const options = {
+//         method: `GET`,
+//         url: `https://www.ncei.noaa.gov/cdo-web/api/v2/locations`,
+//         params: {},
+//         headers: {
+//             'token': process.env.NOAA_KEY
+//         }
+//     };
+//     axios.request(options).then((response) => {
+//         res.status(200).json(response.data)
+//     }).catch((error) => {
+//         console.error(error);
+//     })
+// });
 
-app.get(`/calls/getLocation`, (req, res) => {
-    const address = `83642`;
-    axios.request({
-        method: `GET`,
-        url: `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.GOOGLE_MAPS_KEY}`,
-        params: {},
-        headers: {
-            'token': process.env.NOAA_KEY
-        }
-    }).then((response) => {
-        res.status(200).json(response.data)
-    }).catch((error) => {
-        console.error(error);
+// app.get(`/calls/getLocation`, (req, res) => {
+//     const address = `83642`;
+//     axios.request({
+//         method: `GET`,
+//         url: `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.GOOGLE_MAPS_KEY}`,
+//         params: {},
+//         headers: {
+//             'token': process.env.NOAA_KEY
+//         }
+//     }).then((response) => {
+//         res.status(200).json(response.data)
+//     }).catch((error) => {
+//         console.error(error);
+//     });
+// });
+
+app.get(`/calls/getPlacePhoto`, (req, res) => {
+    const searchParams = new URLSearchParams(req.query);
+    const placePhotosURL = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=${searchParams.get("width")}&photo_reference=${searchParams.get("photo_reference")}&key=${process.env.GOOGLE_MAPS_KEY}`;
+    return res.status(200).json({
+        url: placePhotosURL
     });
 });
 
-app.get(`/calls/getGridLocation`, (req, res) => {
-    // console.log(req.query);
+app.get(`/ calls / getPlaceDetails`, (req, res) => {
     const searchParams = new URLSearchParams(req.query);
-    const searchURL = `https://api.weather.gov/points/${searchParams.get("lat")},${searchParams.get("lng")}`;
-    console.log("searchURL", searchURL)
-
+    const searchURL = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${searchParams.get("locale")}&inputtype=textquery&fields=formatted_address,name,photo,geometry&key=${process.env.GOOGLE_MAPS_KEY}`;
 
     axios.request({
         method: `GET`,
@@ -82,30 +87,37 @@ app.get(`/calls/getGridLocation`, (req, res) => {
 
 app.get(`/calls/getForecast`, async (req, res) => {
 
+    let newResponseObj = {};
     const searchParams = new URLSearchParams(req.query);
 
-    const getGeoCode = await axios.request({
+    const placeURL = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${searchParams.get("locale")}&inputtype=textquery&fields=formatted_address,name,photo,geometry&key=${process.env.GOOGLE_MAPS_KEY}`;
+    const placeCode = await axios.request({
         method: `GET`,
-        url: `https://maps.googleapis.com/maps/api/geocode/json?address=${searchParams.get("locale")}&key=${process.env.GOOGLE_MAPS_KEY}`,
+        url: placeURL,
         params: {},
-        headers: {
-            'token': process.env.NOAA_KEY
-        }
     }).then((response) => {
+        newResponseObj = {
+            ...newResponseObj,
+            googlePlaceDetails: response.data,
+        };
         return response.data;
     }).catch((error) => {
         console.error(error);
     });
 
-    if (getGeoCode?.results?.length === 0 || !getGeoCode.results[0].geometry?.location?.lat) return res.status(400);
+    if (placeCode?.candidates?.length === 0 || !placeCode.candidates[0].geometry?.location?.lat) return res.status(400);
 
-    const lat = getGeoCode.results[0].geometry.location.lat;
-    const lng = getGeoCode.results[0].geometry.location.lng;
+    const lat = placeCode.candidates[0].geometry.location.lat;
+    const lng = placeCode.candidates[0].geometry.location.lng;
     const pointsSearchURL = `https://api.weather.gov/points/${lat},${lng}`;
     const getWeatherGridPoints = await axios.request({
         method: `GET`,
         url: pointsSearchURL
     }).then((response) => {
+        newResponseObj = {
+            ...newResponseObj,
+            weatherPoints: response.data,
+        };
         return response.data;
     }).catch((error) => {
         console.error(error);
@@ -117,11 +129,16 @@ app.get(`/calls/getForecast`, async (req, res) => {
         method: `GET`,
         url: getWeatherGridPoints?.properties?.forecast
     }).then((response) => {
-        res.status(200).json(response.data)
+        newResponseObj = {
+            ...newResponseObj,
+            forecast: response.data,
+        };
+        res.status(200).json(newResponseObj)
         return response.data;
     }).catch((error) => {
         console.error(error);
     });
+
 });
 
 app.listen(PORT, () => {
