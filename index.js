@@ -71,10 +71,16 @@ app.get(`/calls/getPlacePhoto`, (req, res) => {
     });
 });
 
+<<<<<<< HEAD
 app.get(`/ calls / getPlaceDetails`, (req, res) => {
     const searchParams = new URLSearchParams(req.query);
     const searchURL = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${searchParams.get("locale")}&inputtype=textquery&fields=formatted_address,name,photo,geometry&key=${process.env.GOOGLE_MAPS_KEY}`;
 
+=======
+app.get(`/calls/getGridLocation`, (req, res) => {
+    const searchParams = new URLSearchParams(req.query);
+    const searchURL = `https://api.weather.gov/points/${searchParams.get("lat")},${searchParams.get("lng")}`;
+>>>>>>> be0a870 (Initial commit with backend data calls built)
     axios.request({
         method: `GET`,
         url: searchURL
@@ -86,8 +92,11 @@ app.get(`/ calls / getPlaceDetails`, (req, res) => {
 });
 
 app.get(`/calls/getForecast`, async (req, res) => {
+<<<<<<< HEAD
 
     let newResponseObj = {};
+=======
+>>>>>>> be0a870 (Initial commit with backend data calls built)
     const searchParams = new URLSearchParams(req.query);
 
     const placeURL = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${searchParams.get("locale")}&inputtype=textquery&fields=formatted_address,name,photo,geometry&key=${process.env.GOOGLE_MAPS_KEY}`;
