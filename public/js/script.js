@@ -1,10 +1,11 @@
-
 const defaultLocale = `Boise, ID, USA`;
 
 const getForecastCall = async (locale) => {
     return await fetch(`http://localhost:3001/calls/getForecast?locale=${locale}`, {
         method: "GET"
-    }).then(response => response.json()).then(data => data);
+    }).then(response => response.json()).then(data => data).catch((error) => {
+        console.error(error);
+    });
 };
 
 const getPlacePhotoData = async (photoReference) => {
@@ -29,28 +30,39 @@ const setCurrentLocationBox = (locale) => {
     document.querySelector("[data-current-location]").innerHTML = locale;
 }
 
-const getAndSetAllForecastData = async (locale = defaultLocale) => {
-    const forecastData = await getForecastCall(locale);
+const setUpCarousel = (forecastData) => {
+    new Glide('.glide', {
+        perView: 2,
+    }).mount();
+};
+
+const setPageData = (forecastData) => {
     const firstLocaleResult = forecastData?.googlePlaceDetails?.candidates[0];
-    if (!firstLocaleResult) return null;
+    if (!firstLocaleResult) return forecastData;
     if (firstLocaleResult.photos?.length > 0) {
         const photoReference = forecastData.googlePlaceDetails.candidates[0].photos[0].photo_reference;
         getAndSetLocalePhoto(photoReference);
     }
+
     setCurrentLocationBox(firstLocaleResult.formatted_address ? firstLocaleResult.formatted_address : null);
-    return forecastData;
-}
+
+    setUpCarousel(forecastData);
+    console.log("forecastData", forecastData.forecast.properties.periods);
+};
+
+const getAndSetAllForecastData = async (locale = defaultLocale) => {
+    return await getForecastCall(locale);
+};
 
 const checkSearchBar = () => {
     const searchBar = document.querySelector("[data-location-input]");
     const searchBarValue = searchBar.value;
     if (!searchBarValue || searchBarValue.length === 0) return null;
-    console.log(searchBarValue);
     const getForecastData = getAndSetAllForecastData(searchBarValue);
     searchBar.value = ``;
-    getForecastData.then(forecastData => {
-        console.log("forecastData", forecastData);
-    })
+    // getForecastData.then(forecastData => {
+    //     console.log(3, forecastData);
+    // })
 };
 
 const initSearchBarEvents = () => {
@@ -66,8 +78,10 @@ const initSearchBarEvents = () => {
 };
 
 const initWeather = async () => {
-    getAndSetAllForecastData(defaultLocale);
     initSearchBarEvents();
+    getAndSetAllForecastData(defaultLocale).then(data => {
+        setPageData(data);
+    });
 };
 
 initWeather();

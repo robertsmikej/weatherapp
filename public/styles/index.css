@@ -13,10 +13,11 @@
     src: url('../fonts/Raleway-SemiBold.ttf');
 }
 
-body {
+body,
+body * {
     padding: 0;
     margin: 0;
-    font-family: Raleway, Helvetica, sans-serif;
+    font-family: "Raleway", Helvetica, sans-serif;
     box-sizing: border-box;
 }
 
@@ -36,9 +37,9 @@ body {
 
 .weather__app__content {
     width: 90%;
-    height: 84%;
+    height: 80%;
     position: absolute;
-    top: 8%;
+    top: 10%;
     left: 5%;
     display: grid;
     grid-template-columns: min(55%) min(45%);
@@ -53,7 +54,7 @@ body {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    padding: 36;
+    padding: 3rem;
 }
 
 .wa__side--wide {
@@ -87,11 +88,14 @@ body {
 }
 
 .wa__wide__top--sitename {
-    font-family: Raleway, sans-serif;
     color: #FFF;
     padding: 0;
     margin: 0;
     text-shadow: 1px 1px 3px #696969;
+}
+
+.wa__current {
+    padding: 0 1rem;
 }
 
 .wa__current__location {
@@ -125,7 +129,7 @@ body {
 }
 
 .wa__current__location--text-container p:nth-of-type(2) {
-    font-family: Raleway-SemiBold, arial;
+    font-family: "Raleway-SemiBold";
     font-size: 18px;
     min-height: 21px;
 }
@@ -186,7 +190,7 @@ body {
     outline: 0;
     transition: all .4s ease-in;
     cursor: pointer;
-    font-family: "Raleway-Light", Arial;
+    font-family: "Raleway-Light";
     font-size: 18px;
     align-self: center;
 }
@@ -198,4 +202,153 @@ body {
 .wa__location__button:active {
     background: #7f8ff4;
     box-shadow: inset 0 0 10px 2px rgba(0, 0, 0, 0.2);
+}
+
+.wa__side--content {
+    padding: 3rem 3rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.wa__side--content h3 {
+    font-family: "Raleway-SemiBold";
+    font-size: 46px;
+    margin: 20px 0;
+}
+
+.wa__forecast h3 {
+    padding: 0 1rem;
+}
+
+.wa__side--content h4 {
+    font-family: "Raleway-SemiBold";
+    font-size: 42px;
+    margin: 0;
+}
+
+.wa__forecast h4 {
+    font-size: 36px;
+}
+
+.wa__side--content h5 {
+    font-family: "Raleway";
+    font-size: 38px;
+    margin: 0;
+}
+
+.wa__forecast h5 {
+    font-size: 30px;
+}
+
+.wa__side--content h6 {
+    font-family: "Raleway-SemiBold";
+    font-size: 22px;
+    margin: 0 0 10px;
+}
+
+.wa__side--section {
+    max-width: 100%;
+}
+
+.wa__card--shadow {
+    padding: 1.4rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    border-radius: 10px;
+}
+
+.wa__forecast .wa__card--shadow {
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 3px 3px 6px;
+}
+
+.wa__card--large {
+    width: 100%;
+    margin: 2rem auto;
+}
+
+.wa__card--inner {
+    padding: 10px;
+}
+
+.wa__card--conditions {
+    flex: 1;
+}
+
+.wa__card--temp {
+    font-family: "Raleway-SemiBold";
+    font-size: 42px;
+}
+
+.symbol--degree:after {
+    content: "\00B0";
+}
+
+.wa__card--condition-container {
+    width: 100%;
+    margin: 20px 0 26px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+}
+
+.wa__card--condition-container img {
+    max-width: 40px;
+    align-self: center;
+    margin-left: 10px;
+}
+
+.wa__forecast img {
+    max-width: 30px;
+}
+
+.wa__card--vertical-line {
+    width: 4px;
+    background-color: #a3a3a3;
+    border-radius: 10px;
+    margin: 0 10px;
+}
+
+.wa__card--details-text {
+    margin: 0 0 8px;
+    font-family: "Raleway";
+}
+
+.wa__card--details-text span {
+    font-family: "Raleway-SemiBold";
+}
+
+.forecast__slides.glide__slides {
+    padding: 10px 3px;
+    overflow: hidden;
+}
+
+.forecast__track {
+    width: calc(100% - 2rem);
+    margin: 0 auto;
+}
+
+.glide__arrows {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+}
+
+.glide__arrow {
+    font-size: 2rem;
+    line-height: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 3px 3px 6px;
+    border-radius: 50%;
+    padding: 0 10px 5px;
+    background-color: #FFF;
 }
