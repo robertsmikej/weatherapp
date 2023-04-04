@@ -21,6 +21,58 @@ body * {
     box-sizing: border-box;
 }
 
+h1 {
+    margin: 20px auto;
+    font-family: "Raleway-SemiBold", sans-serif;
+    color: #FFF;
+    text-align: center;
+}
+
+h2 {
+    color: #FFF;
+    padding: 0;
+    margin: 0 8px 14px 0;
+    text-shadow: 1px 1px 3px #696969;
+}
+
+h3 {
+    font-family: "Raleway-SemiBold";
+    font-size: 46px;
+    margin: 20px 0;
+}
+
+.wa__forecast h3 {
+    padding: 0 1rem;
+}
+
+h4 {
+    font-family: "Raleway-SemiBold";
+    font-size: 42px;
+    margin: 0;
+}
+
+.wa__forecast h4 {
+    font-size: 36px;
+}
+
+h5 {
+    margin: 16px 0 10px;
+    font-family: "Raleway";
+    font-size: 19px;
+    line-height: 25px;
+    min-height: 75px;
+}
+
+h6 {
+    margin: 0 0 10px;
+    font-family: "Raleway-SemiBold";
+    font-size: 20px;
+}
+
+.wa__forecast h6 {
+    min-height: 48px;
+}
+
 .weather__app {
     width: 100%;
     height: 100%;
@@ -29,11 +81,7 @@ body * {
     background: linear-gradient(69deg, rgba(226, 226, 226, 1) 0%, rgba(107, 107, 107, 1) 100%);
 }
 
-.weather__app h1 {
-    margin: 20px auto;
-    font-family: "Raleway-SemiBold", sans-serif;
-    color: #FFF;
-}
+
 
 .weather__app__content {
     width: 90%;
@@ -87,12 +135,7 @@ body * {
     align-items: center;
 }
 
-.wa__wide__top--sitename {
-    color: #FFF;
-    padding: 0;
-    margin: 0;
-    text-shadow: 1px 1px 3px #696969;
-}
+
 
 .wa__current {
     padding: 0 1rem;
@@ -120,8 +163,6 @@ body * {
 .wa__current__location--icon-container img {
     width: 24px;
 }
-
-.wa__current__location--text-container {}
 
 .wa__current__location--text-container p {
     margin: 2px 0;
@@ -211,44 +252,23 @@ body * {
     justify-content: space-around;
 }
 
-.wa__side--content h3 {
-    font-family: "Raleway-SemiBold";
-    font-size: 46px;
-    margin: 20px 0;
-}
 
-.wa__forecast h3 {
-    padding: 0 1rem;
-}
-
-.wa__side--content h4 {
-    font-family: "Raleway-SemiBold";
-    font-size: 42px;
-    margin: 0;
-}
-
-.wa__forecast h4 {
-    font-size: 36px;
-}
-
-.wa__side--content h5 {
-    font-family: "Raleway";
-    font-size: 38px;
-    margin: 0;
-}
-
-.wa__forecast h5 {
-    font-size: 30px;
-}
-
-.wa__side--content h6 {
-    font-family: "Raleway-SemiBold";
-    font-size: 22px;
-    margin: 0 0 10px;
-}
 
 .wa__side--section {
     max-width: 100%;
+}
+
+.wa__card {
+    max-height: 310px;
+}
+
+.wa__card--row {
+    max-width: 160px;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
 }
 
 .wa__card--shadow {
@@ -277,7 +297,9 @@ body * {
 }
 
 .wa__card--conditions {
-    flex: 1;
+    flex: 2;
+    max-height: 310px;
+    overflow-y: scroll;
 }
 
 .wa__card--temp {
@@ -298,14 +320,9 @@ body * {
     justify-content: flex-start;
 }
 
-.wa__card--condition-container img {
+.wa__card [data-icon] {
     max-width: 40px;
     align-self: center;
-    margin-left: 10px;
-}
-
-.wa__forecast img {
-    max-width: 30px;
 }
 
 .wa__card--vertical-line {
@@ -313,6 +330,10 @@ body * {
     background-color: #a3a3a3;
     border-radius: 10px;
     margin: 0 10px;
+}
+
+.wa__card--details {
+    flex: 1.5;
 }
 
 .wa__card--details-text {
@@ -351,4 +372,71 @@ body * {
     border-radius: 50%;
     padding: 0 10px 5px;
     background-color: #FFF;
+}
+
+@media only screen and (max-width: 1200px) {
+    .weather__app__content {
+        height: 90%;
+        top: 5%;
+        grid-template-columns: 100%;
+        grid-template-rows: min(55%) min(45%);
+    }
+
+    .wa__side--content {
+        padding: 2rem 1rem 2rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .wa__side--section {
+        max-width: 50%;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .weather__app__content {
+        height: 98%;
+        width: 96%;
+        top: 1%;
+        left: 2%;
+        grid-template-rows: minmax(370px, auto) minmax(500px, auto);
+        overflow-y: scroll;
+    }
+
+    .wa__side--content {
+        padding: 1rem;
+        justify-content: flex-start;
+    }
+
+    .wa__side--section {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .wa__card {
+        max-height: 100%;
+    }
+
+    .wa__card--large {
+        margin: 1rem auto 0;
+    }
+
+    .wa__forecast {
+        padding-bottom: 30px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .wa__side {
+        padding: 1rem;
+        flex-wrap: nowrap;
+    }
+
+    .wa__side--content {
+        flex-wrap: wrap;
+    }
+
+    .wa__current {
+        padding: 0.5rem;
+    }
 }

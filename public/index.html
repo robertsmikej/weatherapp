@@ -2,6 +2,8 @@
 
 <head>
     <title>Weather App?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <link rel="stylesheet" type="text/css" href="styles/index.css" />
     <link rel="stylesheet" type="text/css" href="styles/carousel.css" />
 </head>
@@ -36,133 +38,20 @@
             <div class="wa__side wa__side--content">
                 <div class="wa__side--section wa__current">
                     <h3 data-current-title>Today</h3>
-                    <div class="wa__card wa__card--large">
-                        <div class="wa__card--shadow">
-                            <div class="wa__card--inner wa__card--conditions">
-                                <h4 data-current-temperature class="wa__card--temp symbol--degree">32</h4>
-                                <div class="wa__card--condition-container">
-                                    <h5 data-current-description class="wa__card--current-text">Sunny</h5>
-                                    <img data-current-icon src="./imgs/icons/128/day_clear.png" alt="Current Conditions Icon">
-                                </div>
-                                <p data-current-forecast class="wa__card--forecast">Isolated Snow Showers</p>
-                            </div>
-                            <div class="wa__card--vertical-line"></div>
-                            <div class="wa__card--inner wa__card--details">
-                                <p class="wa__card--details-text">
-                                    <span data-current-date>Today's Date</span>
-                                </p>
-                                <p class="wa__card--details-text">
-                                    Wind Speed: <span data-current-wind>10 to 20 mph</span>
-                                </p>
-                                <p class="wa__card--details-text">
-                                    Humidity: <span data-current-humidity>84%</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                    <div data-card-large class="wa__card wa__card--large"></div>
                 </div>
                 <div class="wa__side--section wa__forecast">
                     <h3>Forecast</h3>
                     <div class="forecast__carousel--outer">
                         <div class="glide forecast__carousel">
                             <div class="forecast__track glide__track" data-glide-el="track">
-                                <ul class="forecast__slides glide__slides">
-                                    <li class="glide__slide wa__card">
-                                        <div class="wa__card--shadow">
-                                            <div class="wa__card--inner wa__card--conditions">
-                                                <h6 data-temperature>This Afternoon</h6>
-                                                <h4 data-temperature class="symbol--degree">32</h4>
-                                                <div class="wa__card--condition-container">
-                                                    <h5 data-description>Suadnny</h5>
-                                                    <img data-icon src="./imgs/icons/128/sleet.png" alt="Current Conditions Icon">
-                                                </div>
-                                                <p data-forecast>Isolated Snow Showers</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="glide__slide wa__card">
-                                        <div class="wa__card--shadow">
-                                            <div class="wa__card--inner wa__card--conditions">
-                                                <h6 data-temperature>This Afternoon</h6>
-                                                <h4 data-temperature class="symbol--degree">32</h4>
-                                                <div class="wa__card--condition-container">
-                                                    <h5 data-description>Sunny</h5>
-                                                    <img data-icon src="./imgs/icons/128/sleet.png" alt="Current Conditions Icon">
-                                                </div>
-                                                <p data-forecast>Isolated Snow Showers</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="glide__slide wa__card">
-                                        <div class="wa__card--shadow">
-                                            <div class="wa__card--inner wa__card--conditions">
-                                                <h6 data-temperature>This Afternoon</h6>
-                                                <h4 data-temperature class="symbol--degree">32</h4>
-                                                <div class="wa__card--condition-container">
-                                                    <h5 data-description>Sunny</h5>
-                                                    <img data-icon src="./imgs/icons/128/sleet.png" alt="Current Conditions Icon">
-                                                </div>
-                                                <p data-forecast>Isolated Snow Showers</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="glide__slide wa__card">
-                                        <div class="wa__card--shadow">
-                                            <div class="wa__card--inner wa__card--conditions">
-                                                <h6 data-temperature>This Afternoon</h6>
-                                                <h4 data-temperature class="symbol--degree">32</h4>
-                                                <div class="wa__card--condition-container">
-                                                    <h5 data-description>Sunny</h5>
-                                                    <img data-icon src="./imgs/icons/128/sleet.png" alt="Current Conditions Icon">
-                                                </div>
-                                                <p data-forecast>Isolated Snow Showers</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="glide__slide wa__card">
-                                        <div class="wa__card--shadow">
-                                            <div class="wa__card--inner wa__card--conditions">
-                                                <h6 data-temperature>This Afternoon</h6>
-                                                <h4 data-temperature class="symbol--degree">32</h4>
-                                                <div class="wa__card--condition-container">
-                                                    <h5 data-description>Sunny</h5>
-                                                    <img data-icon src="./imgs/icons/128/sleet.png" alt="Current Conditions Icon">
-                                                </div>
-                                                <p data-forecast>Isolated Snow Showers</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="glide__slide wa__card">
-                                        <div class="wa__card--shadow">
-                                            <div class="wa__card--inner wa__card--conditions">
-                                                <h6 data-temperature>This Afternoon</h6>
-                                                <h4 data-temperature class="symbol--degree">32</h4>
-                                                <div class="wa__card--condition-container">
-                                                    <h5 data-description>Sunny</h5>
-                                                    <img data-icon src="./imgs/icons/128/sleet.png" alt="Current Conditions Icon">
-                                                </div>
-                                                <p data-forecast>Isolated Snow Showers</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
+                                <ul data-carousel-container class="forecast__slides glide__slides"></ul>
                             </div>
                             <div class="glide__arrows" data-glide-el="controls">
                                 <div class="glide__arrow glide__arrow--left" data-glide-dir="<">&#60;</div>
                                 <div class="glide__arrow glide__arrow--right" data-glide-dir=">">&#62;</div>
                             </div>
                         </div>
-
-                        <!-- <div data-glide-el="controls" class="forecast__carousel--controls">
-                            <button data-glide-dir="<<">Start</button>
-                            <button data-glide-dir=">>">End</button>
-                            <li class="prev" data-controls="prev" aria-controls="customize" tabindex="-1">
-                                <img src="./imgs/icons/previous.png" alt="Previous Slide">
-                            </li>
-                            <li class="next" data-controls="next" aria-controls="customize" tabindex="-1">
-                                <img src="./imgs/icons/next.png" alt="Next Slide">
-                            </li>
-                        </div> -->
                     </div>
                 </div>
             </div>
