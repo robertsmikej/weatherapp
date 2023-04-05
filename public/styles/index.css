@@ -61,7 +61,6 @@ h5 {
     margin: 16px 0 10px;
     min-height: 75px;
     font-size: 19px;
-    font-family: "Raleway";
     line-height: 25px;
 }
 
@@ -85,12 +84,12 @@ h6 {
 
 .weather__app__content {
     width: 90%;
-    height: 80%;
+    height: 86%;
     position: absolute;
-    top: 10%;
+    top: 7%;
     left: 5%;
     display: grid;
-    grid-template-columns: min(55%) min(45%);
+    grid-template-columns: min(50%) min(50%);
     background-color: #FFF;
     border-radius: 30px;
     overflow: hidden;
@@ -247,7 +246,7 @@ h6 {
     padding: 3rem 3rem 4rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 .wa__side--section {
@@ -329,12 +328,11 @@ h6 {
 }
 
 .wa__card--details {
-    flex: 1.5;
+    flex: 2;
 }
 
 .wa__card--details-text {
     margin: 0 0 8px;
-    font-family: "Raleway";
 }
 
 .wa__card--details-text span {
@@ -399,6 +397,10 @@ h6 {
         overflow-y: scroll;
     }
 
+    h3 {
+        font-size: 36px;
+    }
+
     .wa__side--content {
         padding: 1rem;
         justify-content: flex-start;
@@ -418,11 +420,29 @@ h6 {
     }
 
     .wa__forecast {
+        padding-top: 20px;
         padding-bottom: 30px;
     }
 }
 
+@media only screen and (max-width: 768px) {
+    .weather__app__content {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        border-radius: 0;
+        box-shadow: none;
+    }
+}
+
 @media only screen and (max-width: 600px) {
+
+    h3 {
+        margin: 0 0 10px;
+        font-size: 30px;
+    }
+
     .wa__current__location {
         margin: 0 auto;
     }

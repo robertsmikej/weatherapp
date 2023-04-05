@@ -72,7 +72,7 @@ const buildTopCard = (data) => {
                     Humidity: <span>${data.relativeHumidity.value}%</span>
                 </p>
                 <p class="wa__card--details-text">
-                    Chance of Percipitation: <span>${data.probabilityOfPrecipitation.value}%</span>
+                    Percipitation: <span>${data.probabilityOfPrecipitation.value}%</span>
                 </p>
             </div>
         </div>
