@@ -1,17 +1,16 @@
 {
   "name": "weatherapp",
   "version": "1.0.0",
-  "description": "Weather App for Animal Farm",
+  "description": "Weather App",
   "main": "index.js",
   "scripts": {
-    "start:backend": "nodemon index.js",
-    "start:frontend": "nodemon app.js"
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/robertsmikej/weatherapp.git"
   },
-  "author": "",
+  "author": "Mike Roberts",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/robertsmikej/weatherapp/issues"
@@ -24,8 +23,6 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "jsonwebtoken": "^9.0.0",
-    "nodemon": "^2.0.22",
-    "tiny-slider": "^2.9.4"
+    "nodemon": "^2.0.22"
   }
 }
