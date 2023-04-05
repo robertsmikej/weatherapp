@@ -39,7 +39,7 @@ const buildInnerCard = (data, type) => {
             <h6>${data.name}</h6>
             <div class="wa__card--row">
                 <h4 class="symbol--degree">${data.temperature}</h4>
-                <img data-icon src="${getCorrectIcon(data.shortForecast)}" alt="Current Conditions Icon">
+                <img data-icon src="${getCorrectIcon(data.shortForecast)}" alt="${data.shortForecast} Forecast Icon">
             </div>
             <h5>${(type && type === "long") ? data.detailedForecast : data.shortForecast}</h5>
         </div>
@@ -72,7 +72,7 @@ const buildTopCard = (data) => {
                     Humidity: <span>${data.relativeHumidity.value}%</span>
                 </p>
                 <p class="wa__card--details-text">
-                    Percipitation: <span>${data.probabilityOfPrecipitation.value}%</span>
+                    Percipitation: <span>${data.probabilityOfPrecipitation.value ? data.probabilityOfPrecipitation.value : 0}%</span>
                 </p>
             </div>
         </div>
