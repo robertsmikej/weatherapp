@@ -9,7 +9,7 @@ const app = express();
 
 app.use(cors());
 
-app.use(express.static('public'))
+app.use(express.static('public'));
 
 app.get(`/`, (req, res) => {
     res.sendFile(`/public/index.html`, { root: '.' });
@@ -88,7 +88,6 @@ app.get(`/calls/getForecast`, async (req, res) => {
     }).catch((error) => {
         console.error("Grid points API Error:", error);
     });
-
 });
 
 app.listen(PORT, () => {

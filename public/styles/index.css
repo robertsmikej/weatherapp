@@ -38,13 +38,14 @@ h2 {
 }
 
 h3 {
-    margin: 20px 0;
+    margin: 14px 0 6px;
     font-size: 46px;
     font-family: "Raleway-SemiBold";
 }
 
 .wa__forecast h3 {
     padding: 0 1rem;
+    margin-bottom: 6px;
 }
 
 h4 {
@@ -59,7 +60,7 @@ h4 {
 
 h5 {
     margin: 16px 0 10px;
-    min-height: 75px;
+    min-height: 50px;
     font-size: 19px;
     line-height: 25px;
 }
@@ -84,9 +85,9 @@ h6 {
 
 .weather__app__content {
     width: 90%;
-    height: 86%;
+    height: 90%;
     position: absolute;
-    top: 7%;
+    top: 5%;
     left: 5%;
     display: grid;
     grid-template-columns: min(50%) min(50%);
@@ -243,19 +244,21 @@ h6 {
 }
 
 .wa__side--content {
-    padding: 3rem 3rem 4rem;
+    padding: 0 3rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
+    flex-wrap: nowrap;
+    overflow-y: scroll;
 }
 
 .wa__side--section {
     max-width: 100%;
 }
 
-.wa__card {
+/* .wa__card {
     max-height: 310px;
-}
+} */
 
 .wa__card--row {
     max-width: 160px;
@@ -284,7 +287,7 @@ h6 {
 
 .wa__card--large {
     width: 100%;
-    margin: 2rem auto;
+    margin: 0.5rem auto 1rem;
 }
 
 .wa__card--inner {
@@ -293,7 +296,7 @@ h6 {
 
 .wa__card--conditions {
     flex: 2;
-    max-height: 310px;
+    max-height: 200px;
     overflow-y: scroll;
 }
 
@@ -368,16 +371,18 @@ h6 {
     background-color: #FFF;
 }
 
+@media only screen and (max-width: 1400px) {}
+
 @media only screen and (max-width: 1200px) {
     .weather__app__content {
         height: 90%;
         top: 5%;
         grid-template-columns: 100%;
-        grid-template-rows: min(55%) min(45%);
+        grid-template-rows: min(45%) min(55%);
     }
 
     .wa__side--content {
-        padding: 2rem 1rem 2rem;
+        padding: 1.5rem 1rem 2rem;
         flex-direction: row;
         flex-wrap: wrap;
     }
@@ -404,6 +409,7 @@ h6 {
     .wa__side--content {
         padding: 1rem;
         justify-content: flex-start;
+        overflow-y: none;
     }
 
     .wa__side--section {
