@@ -15,3 +15,9 @@ I'm going to assume a basic knowledge of git, terminal, and node here.
 <!-- -->
 -   To start app type in terminal: `npm run start`
 -   This will start the server and allow you to go to `http://localhost:3001/` and see the app
+
+## Things I'd add to the app with more time
+
+-   A fallback if there are no search results for location
+-   Add some generic photos for if there are no photos for search results
+-   Add loader to show when data is being loaded, skeleton, etc.

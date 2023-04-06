@@ -235,7 +235,3 @@ const initWeather = async () => {
     });
 };
 document.addEventListener("DOMContentLoaded", initWeather);
-
-//Fallback if there are no search results for location
-//Add some generic photos for if there are no photos for search results
-//Add loader to show when data is being loaded
